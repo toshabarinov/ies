@@ -17,13 +17,13 @@ public class Main {
             System.out.println(i);
         }
     }
-        System.out.println();
+        System.out.println("BUCHSTABEN : ");
         for(int i : buchstaben) {
             System.out.println(i);
         }
 
 
-
+    numberToWordParser.parser(6598443);
     }
 
 }
