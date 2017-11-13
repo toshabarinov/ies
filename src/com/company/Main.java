@@ -1,29 +1,17 @@
 package com.company;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
-	ArrayList<Integer> buchstaben = new ArrayList<>();
-	int factor = (int)Math.pow(26,4);
-	for(int i = 0; i < 26; i++) {
-	    buchstaben.add(i * factor);
-    }
-    int bereich1 = 6141468;
-	int bereich2 = 6580867;
-	for(int i : buchstaben) {
-        if(i > bereich1 && i < bereich2) {
-            System.out.println(i);
-        }
-    }
-        System.out.println("BUCHSTABEN : ");
-        for(int i : buchstaben) {
-            System.out.println(i);
-        }
 
-
-    numberToWordParser.parser(6598443);
+        String input = "7624886934"; // COUNTRY
+        String input2 = "6598547"; // HELLO
+        String input3 = "6598443"; // HALLO
+        String input4 = "144727094174"; // APADANAS
+        System.out.println(numberToWordParser.parser(new BigInteger(input4)));
     }
 
 }
