@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class numberToWordParser {
-    static HashMap<Integer, Character> alphabet = new HashMap<>();
+    static private HashMap<Integer, Character> alphabet = new HashMap<>();
     static private final int ALPHABET_LENGTH = 26;
 
     static {
         int character = 65;
         for(int i = 0; i < ALPHABET_LENGTH; i++) {
             char ch = (char)character;
-            alphabet.put(i, (Character)ch);
+            alphabet.put(i, ch);
             character++;
         }
     }
@@ -25,7 +25,7 @@ public class numberToWordParser {
         for(int i = 0; i < arraySize; i++) {
             ArrayList<BigInteger> alphabet = getAlphabet(numberOfLetters);
             BigInteger minArea = input.subtract(getMaximum(numberOfLetters-1));
-            BigInteger maxArea = input.subtract(getMinimum(numberOfLetters-1));
+            BigInteger maxArea = input.subtract(getMinimum());
             for(BigInteger in : alphabet) {
                 if(in.compareTo(minArea) >= 0 && in.compareTo(maxArea) <= 0) {
                     output += getCharacter(in, alphabet);
@@ -34,9 +34,8 @@ public class numberToWordParser {
                 }
             }
             numberOfLetters--;
-
         }
-        StringBuffer outputBuf = new StringBuffer(output);
+        StringBuilder outputBuf = new StringBuilder(output);
         outputBuf.reverse();
         output = outputBuf.toString();
         return output;
@@ -48,14 +47,14 @@ public class numberToWordParser {
                 return alphabet.get(i);
             }
         }
-        return 'x';
+        return 'x'; // error
     }
 
     private static int findNumberOfLetters(BigInteger in) {
         int output = 1;
 
         while(true) {
-            if (in.compareTo(getMinimum(output)) > 0  && in.compareTo(getMaximum(output)) < 0) {
+            if (in.compareTo(getMinimum()) > 0  && in.compareTo(getMaximum(output)) < 0) {
                 break;
             }
             output++;
@@ -63,11 +62,8 @@ public class numberToWordParser {
         return output;
     }
 
-    private static BigInteger getMinimum(int input) {
-        //if(input == 0) {
+    private static BigInteger getMinimum() {
             return new BigInteger("0");
-        //}
-        //return  new BigInteger("26").pow(input-1); // return 0 if AAAA?
     }
 
     private static BigInteger getMaximum(int input) {
@@ -89,5 +85,4 @@ public class numberToWordParser {
         }
         return output;
     }
-
 }
