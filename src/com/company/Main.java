@@ -11,6 +11,13 @@ public class Main {
         String input2 = "6598547"; // HELLO
         String input3 = "6598443"; // HALLO
         String input4 = "144727094174"; // APADANAS
-        System.out.println(numberToWordParser.parser(new BigInteger(input5)));
+
+        String input6 = "71467136137178"; // decr. 640003122567578301446  --> SATTLXRMINKPYXJ
+
+        String inputcipher = "SATTLXRMINKPYXJ";
+
+        System.out.println(cipherToNumberParser.parser(inputcipher));
+
+        System.out.println(numberToWordParser.parser(new BigInteger(input6)));
     }
 }
