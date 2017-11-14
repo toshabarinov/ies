@@ -14,12 +14,12 @@ public class factor {
         while(true) {
             BigInteger result = input.divide(sqrt);
             if(result.multiply(sqrt).compareTo(input) == 0) {
-                System.out.println("SUCCESS" + sqrt + " -- " + input.divide(sqrt));
+                output.add(sqrt);
+                output.add(input.divide(sqrt));
                 break;
             }
             else {
                 sqrt = sqrt.add(it);
-                System.out.println(sqrt);
             }
         }
         return output;

@@ -4,31 +4,33 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Main {
+    static private final BigInteger PUBLIC_KEY = new BigInteger("849075495442228387159");
+    static private final BigInteger EXPONENT = new BigInteger("65537");
+    static private final String CIPHER_TEXT = "SATTLXRMINKPYXJ";
+
 
     public static void main(String[] args) {
-        String input5 = "25775122570195912724"; // encrypted 'HALLO'
-        String input = "7624886934"; // COUNTRY
-        String input2 = "6598547"; // HELLO
-        String input3 = "6598443"; // HALLO
-        String input4 = "144727094174"; // APADANAS
+        //ArrayList<BigInteger> primeNumbers = factor.factorMe(PUBLIC_KEY); // FULL VERSION
+        ArrayList<BigInteger> primeNumbers = new ArrayList<>();          // SHORT VERSION
+        primeNumbers.add(new BigInteger("30077289527"));           //
+        primeNumbers.add(new BigInteger("28229787617"));          //
 
-        String input6 = "71467136137178"; // decr. 640003122567578301446  --> SATTLXRMINKPYXJ
-        //System.out.println(numberToWordParser.parser(new BigInteger(input6)));
+        BigInteger phiFromN = calculatePhiFromN(primeNumbers);
+        BigInteger privateKey = calculatePrivateKey(phiFromN);
 
-
-
-        String inputcipher = "SATTLXRMINKPYXJ";
-
-        //System.out.println(cipherToNumberParser.parser(inputcipher));
-
-
-        BigInteger d = new BigInteger("676920602992424195905");  //todo: d berechnen
-        BigInteger n = new BigInteger("849075495442228387159");
-        BigInteger m = cipherToNumberParser.parser(inputcipher).modPow( d, n);  // m = c^d mod n
-
+        BigInteger m = cipherToNumberParser.parser(CIPHER_TEXT).modPow( privateKey, PUBLIC_KEY);  // m = c^d mod n
         System.out.println(numberToWordParser.parser(m));
-        factor.factorMe(new BigInteger("849075495442228387159"));
-
-
     }
+
+    private static BigInteger calculatePhiFromN(ArrayList<BigInteger> primeNumbers) { // phi(n) = (q-1) * (p-1)
+        return (primeNumbers.get(0).subtract(BigInteger.valueOf(1))).
+                multiply(primeNumbers.get(1).subtract(BigInteger.valueOf(1)));
+    }
+
+    private static BigInteger calculatePrivateKey(BigInteger phi) {
+        return EXPONENT.modInverse(phi);
+    }
+
+
+
 }
