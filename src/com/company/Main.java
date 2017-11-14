@@ -27,6 +27,7 @@ public class Main {
         BigInteger m = cipherToNumberParser.parser(inputcipher).modPow( d, n);  // m = c^d mod n
 
         System.out.println(numberToWordParser.parser(m));
+        factor.factorMe(new BigInteger("849075495442228387159"));
 
 
     }

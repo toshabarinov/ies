@@ -6,10 +6,7 @@ import java.util.ArrayList;
 public class cipherToNumberParser {
 
     public static BigInteger parser(String input) {
-
         BigInteger output = new BigInteger("0");
-
-
         int numberOfLetters = input.length();
         for(int i = 0; i < numberOfLetters; i++) {
 
