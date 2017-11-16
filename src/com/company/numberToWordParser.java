@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class numberToWordParser {
+class numberToWordParser {
     static private HashMap<Integer, Character> alphabet = new HashMap<>();
     static private final int ALPHABET_LENGTH = 26;
 
@@ -18,7 +18,7 @@ public class numberToWordParser {
         }
     }
 
-    public static String parser(BigInteger input) {
+    static String parser(BigInteger input) {
         String output = "";
         int numberOfLetters = findNumberOfLetters(input);
         int arraySize = numberOfLetters;
@@ -77,6 +77,7 @@ public class numberToWordParser {
         }
         return output;
     }
+
     private static ArrayList<BigInteger> getAlphabet(int numberOfWords) {
         BigInteger factor = new BigDecimal(Math.pow(ALPHABET_LENGTH,numberOfWords-1)).unscaledValue();
         ArrayList<BigInteger> output = new ArrayList<>();

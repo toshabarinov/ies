@@ -3,8 +3,8 @@ package com.company;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public class factor {
-    public static ArrayList<BigInteger> factorMe(BigInteger input) {
+class factor {
+    static ArrayList<BigInteger> factorMe(BigInteger input) {
         ArrayList<BigInteger> output = new ArrayList<>();
         BigInteger sqrt = sqrt(input);
         if(sqrt.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO) == 0) {

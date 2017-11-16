@@ -10,6 +10,7 @@ public class Main {
     static private final String CIPHER_TEXT = "SATTLXRMINKPYXJ";
 
 
+
     public static void main(String[] args) {
         //ArrayList<BigInteger> primeNumbers = factor.factorMe(PUBLIC_KEY); // FULL VERSION
         ArrayList<BigInteger> primeNumbers = new ArrayList<>();          // SHORT VERSION
@@ -19,8 +20,9 @@ public class Main {
         BigInteger phiFromN = calculatePhiFromN(primeNumbers);
         BigInteger privateKey = calculatePrivateKey(phiFromN);
         BigInteger m = cipherToNumberParser.parser(CIPHER_TEXT).modPow( privateKey, PUBLIC_KEY);  // m = c^d mod n
-        System.out.println(numberToWordParser.parser(m));
-        System.out.println("Hash : " + shaConverter.sha64("10301231030456"));
+        //System.out.println(numberToWordParser.parser(m));
+        System.out.println("Hash : " + shaConverter.sha64("1"));
+        collisionCreation.calculate();
     }
 
     private static BigInteger calculatePhiFromN(ArrayList<BigInteger> primeNumbers) { // phi(n) = (q-1) * (p-1)
@@ -31,9 +33,6 @@ public class Main {
     private static BigInteger calculatePrivateKey(BigInteger phi) {
         return EXPONENT.modInverse(phi);
     }
-
-
-
 }
 
 
