@@ -45,6 +45,7 @@ class  shaConverter {
         for(int it = 5 ; it < 8; it++)
             result2 ^= inputParts.get(it);
 
-        return  Long.toHexString( result2) + Long.toHexString(result);
+        //return  Long.toHexString( result2) + Long.toHexString(result);
+        return  Long.toHexString( result2);
     }
 }

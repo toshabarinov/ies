@@ -22,7 +22,10 @@ public class Main {
         BigInteger m = cipherToNumberParser.parser(CIPHER_TEXT).modPow( privateKey, PUBLIC_KEY);  // m = c^d mod n
         //System.out.println(numberToWordParser.parser(m));
         System.out.println("Hash : " + shaConverter.sha64("1"));
-        collisionCreation.calculate();
+        ArrayList<String> collisions = collisionCreation.calculate();
+        System.out.println(collisions.get(0) + " hash : " + shaConverter.sha64(collisions.get(0)));
+        System.out.println(collisions.get(1) + " hash : " + shaConverter.sha64(collisions.get(1)));
+
     }
 
     private static BigInteger calculatePhiFromN(ArrayList<BigInteger> primeNumbers) { // phi(n) = (q-1) * (p-1)
